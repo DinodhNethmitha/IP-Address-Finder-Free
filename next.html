@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Next Page</title>
+  <style>
+    body {
+      background: #000;
+      font-family: 'Orbitron', sans-serif;
+      text-align: center;
+      padding-top: 50px;
+      color: #fff;
+    }
+
+    .welcome-box {
+      display: inline-block;
+      padding: 20px 40px;
+      border-radius: 25px;
+      background: linear-gradient(135deg, #2F46FA, #55FC77, #FFFE13, #FB41DA, #7E2DE8);
+      color: #000;
+      font-size: 24px;
+      font-weight: bold;
+      text-shadow: 0 0 5px #fff;
+    }
+
+    .surprise-btn {
+      background: #E42536;
+      color: #fff;
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 15px #E42536;
+      margin-top: 30px;
+      border-radius: 10px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 10px #E42536; }
+      50% { box-shadow: 0 0 30px #56F1FF; }
+      100% { box-shadow: 0 0 10px #E42536; }
+    }
+
+    .ip-info {
+      margin-top: 30px;
+      color: #56F1FF;
+      font-size: 18px;
+    }
+
+    .footer {
+      margin-top: 50px;
+      font-size: 16px;
+      color: #55FC77;
+    }
+    .footer span {
+      color: #FB41DA;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="welcome-box">
+    Hi <span id="user"></span>!
+  </div>
+
+  <div>
+    <button class="surprise-btn" onclick="getIP()">Check Your IP</button>
+  </div>
+
+  <div class="ip-info" id="ipDetails"></div>
+
+  <div class="footer">
+    <p>Thank For Using This Website</p>
+    <p>Create By - <span>D°°°°H</span></p>
+  </div>
+
+  <script>
+    document.getElementById("user").textContent = localStorage.getItem("username");
+
+    function getIP() {
+      // Using ipapi.co (no token required)
+      fetch("https://ipapi.co/json/")
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById("ipDetails").innerHTML = `
+            <p><strong>IP Address:</strong> ${data.ip}</p>
+            <p><strong>Country:</strong> ${data.country_name}</p>
+          `;
+        })
+        .catch(error => {
+          document.getElementById("ipDetails").textContent = "Error fetching IP details.";
+        });
+    }
+  </script>
+</body>
+</html>
