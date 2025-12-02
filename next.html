@@ -3,37 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <title>Next Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- ✅ Mobile scaling -->
   <style>
     body {
       background: #000;
       font-family: 'Orbitron', sans-serif;
       text-align: center;
-      padding-top: 50px;
+      padding: 20px;
       color: #fff;
     }
 
     .welcome-box {
       display: inline-block;
-      padding: 20px 40px;
-      border-radius: 25px;
+      padding: 15px 25px;
+      border-radius: 20px;
       background: linear-gradient(135deg, #2F46FA, #55FC77, #FFFE13, #FB41DA, #7E2DE8);
       color: #000;
-      font-size: 24px;
+      font-size: 22px;
       font-weight: bold;
       text-shadow: 0 0 5px #fff;
+      max-width: 90%;
     }
 
     .surprise-btn {
       background: #E42536;
       color: #fff;
-      padding: 15px 30px;
-      font-size: 18px;
+      padding: 12px 20px;
+      font-size: 16px;
       border: none;
       cursor: pointer;
       box-shadow: 0 0 15px #E42536;
-      margin-top: 30px;
+      margin-top: 20px;
       border-radius: 10px;
       animation: pulse 2s infinite;
+      width: 90%; /* ✅ full width on mobile */
+      max-width: 300px;
     }
 
     @keyframes pulse {
@@ -43,14 +47,14 @@
     }
 
     .ip-info {
-      margin-top: 30px;
+      margin-top: 20px;
       color: #56F1FF;
-      font-size: 18px;
+      font-size: 16px;
     }
 
     .footer {
-      margin-top: 50px;
-      font-size: 16px;
+      margin-top: 40px;
+      font-size: 14px;
       color: #55FC77;
     }
     .footer span {
@@ -79,8 +83,7 @@
     document.getElementById("user").textContent = localStorage.getItem("username");
 
     function getIP() {
-      // Using ipapi.co (no token required)
-      fetch("https://ipapi.co/json/")
+      fetch("https://ipapi.co/json/") // ✅ no token required
         .then(response => response.json())
         .then(data => {
           document.getElementById("ipDetails").innerHTML = `
