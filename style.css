@@ -9,32 +9,36 @@ body {
 }
 
 .login-box {
+  width: 90%;          /* ✅ responsive width */
+  max-width: 400px;    /* limit on large screens */
   border: 2px solid #56F1FF;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 0 15px #56F1FF; /* glow reduced */
+  box-shadow: 0 0 15px #56F1FF;
   text-align: center;
 }
 
 .neon {
   color: #56F1FF;
-  text-shadow: 0 0 3px #56F1FF, 0 0 6px #56F1FF; /* softer glow */
+  text-shadow: 0 0 3px #56F1FF, 0 0 6px #56F1FF;
 }
 
 input {
   display: block;
   margin: 15px auto;
   padding: 10px;
-  width: 80%;
+  width: 100%;         /* ✅ full width on mobile */
   border: 2px solid #56F1FF;
   background: #111;
   color: #56F1FF;
   outline: none;
+  box-sizing: border-box;
 }
 
 button {
-  padding: 10px 20px;
-  background: #E42536; /* red colour */
+  width: 100%;         /* ✅ full width button */
+  padding: 12px;
+  background: #E42536;
   color: #fff;
   border: none;
   cursor: pointer;
@@ -43,4 +47,17 @@ button {
 button:hover {
   background: #fff;
   color: #E42536;
+}
+
+/* ✅ Mobile adjustments */
+@media (max-width: 600px) {
+  .login-box {
+    padding: 20px;
+  }
+  .neon {
+    font-size: 20px;
+  }
+  input, button {
+    font-size: 16px;
+  }
 }
